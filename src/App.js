@@ -8,7 +8,7 @@ import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component';
 import { auth } from './firebase/firebase.utils'
-import {  createUserProfileCocument } from './firebase/firebase.utils'
+import {  createUserProfileDocument } from './firebase/firebase.utils'
 
 class App extends React.Component {
   constructor() {
@@ -28,7 +28,7 @@ class App extends React.Component {
       if (userAuth) {
   
       
-      const userRef = await createUserProfileCocument(userAuth) 
+      const userRef = await createUserProfileDocument(userAuth) 
 
       console.log(userRef)
       
@@ -39,12 +39,12 @@ class App extends React.Component {
               ...snapShot.data()
         }
       }
-      // },
-      // () => {
+      ,
+       () => {
      
-      //   console.log(this.state)
+         console.log(this.state)
     
-      // }
+       }
       )
     })
      
