@@ -13,21 +13,24 @@ const config = {
   measurementId: "G-3W6YVZ0GFJ"
 } ;
 
-export const createUserProfileDocument = async (userAuth, additionalData) => {
+export const createUserProfileDocument = async (userAuth,  additionalData) => {
 
   if (!userAuth) return
 
  
+  
   const userRef = await firestore.doc(`users/${userAuth.uid}`)
-
    
   const snapShot = await userRef.get()
 
  
   if (!snapShot.exists) {
-    const {displayName, email} = userAuth 
+    var {displayName, email} = userAuth 
     const createdAt = new Date()
 
+    console.log( 'a1',displayName)
+    if (!displayName)  displayName =  {additionalData}
+    console.log('a2',displayName)
    
     try {
       await userRef.set ({

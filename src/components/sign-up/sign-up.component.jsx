@@ -25,6 +25,8 @@ class SignUp extends React.Component {
 
             const {displayName, email, password, confirmPassword} = this.state
 
+                   
+
             if (password !== confirmPassword) {
                 alert("Passwords dont't match")
                 return
@@ -33,6 +35,7 @@ class SignUp extends React.Component {
             try {
 
                 const { user } = await auth.createUserWithEmailAndPassword(email, password)
+                     
 
               await createUserProfileDocument(user, {displayName})
 
@@ -52,14 +55,10 @@ class SignUp extends React.Component {
     handleChange =  event => {
 
         const {name, value} = event.target
-
+     
         this.setState({[name]: value} )
         
-        
-
-      
-
-
+       
     }
 
     render() { 
@@ -100,14 +99,7 @@ class SignUp extends React.Component {
                 label='Confirm Password'
                 required
                 />
-                 {/* <FormInput 
-                type='password'
-                name='confirmPassword'
-                value={confirmPassword}
-                onChange={this.handleChange}
-                label='Confirm Password'
-                required
-                />  */}
+            
                
                 <CustomButton type='submit'>SIGN UP</CustomButton>
             
